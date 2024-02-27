@@ -1,0 +1,29 @@
+{
+    "_NotePad__data": {
+        "1": {
+            "id_note": 1,
+            "title": "1_st_note",
+            "text": "some note about something",
+            "date_note": "2024-02-25 22:37:12.854473"
+        },
+        "2": {
+            "id_note": 2,
+            "title": "2_st_note",
+            "text": "some note about anything",
+            "date_note": "2024-02-25 22:37:12.854473"
+        },
+        "3": {
+            "id_note": 3,
+            "title": "3_st_note",
+            "text": "some note about nothing",
+            "date_note": "2024-02-25 22:37:12.854473"
+        },
+        "4": {
+            "id_note": 4,
+            "title": "4_st_note",
+            "text": "some note not about anything",
+            "date_note": "2024-02-25 22:37:12.854473"
+        }
+    },
+    "_NotePad__last_note": 4
+}
