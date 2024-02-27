@@ -35,14 +35,16 @@ class Presenter:
             NewConsole.console_full_note(my_note)
             my_note.read_note(10)
         elif self.command[1] == '--help':
-            print('''--help  / справка; 
+            print('''--help  / справка 
 --test  / запуск программы в режиме автотеста
 --list  / чтение всех заметок 
 --add   / создание новой заметки
 --del   / удаление заметки по ключу
 --pop   / удаление заметки по ключу с чтением
---rid   / чтение заметки по ключу
---rd    / чтение заметки по дате
+--rbi   / чтение заметки по ключу
+--rbd   / чтение заметки по дате
+--cttl   / редактировать название заметки
+--ctxt  / редактировать содержание заметки
                             ''')
         elif self.command[1] == '--add':
             t = NewConsole.add_dialog()
@@ -56,8 +58,20 @@ class Presenter:
             my_note.delete_note(t_id)
         elif self.command[1] == '--list':
             NewConsole.console_full_note(my_note)
-        elif self.command[1] == '--rid':
+        elif self.command[1] == '--rbi':
             t_id = NewConsole.read_dialog()
             NewConsole.console_single_print(my_note.read_note(t_id), t_id.__str__())
-        # elif self.command[1] == '--rid':
+        elif self.command[1] == '--rbd':
+            t_date = NewConsole.read_dialog_by_date()
+            t_id_list = my_note.read_id_by_date(t_date.__str__())
+            for i_id in t_id_list:
+                NewConsole.console_single_print(my_note.read_note(i_id), i_id.__str__())
+        elif self.command[1] == '--cttl':
+            tuple_data = NewConsole.correct_dialog()
+            my_note.correct_note_title(tuple_data[0], tuple_data[1])
+        elif self.command[1] == '--ctxt':
+            tuple_data = NewConsole.correct_dialog()
+            my_note.correct_note_title(tuple_data[0], tuple_data[1])
+
+
         

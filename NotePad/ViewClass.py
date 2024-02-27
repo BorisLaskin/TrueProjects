@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 import LibOfClass
+from datetime import datetime, date
 
 
 @dataclass()
@@ -14,6 +15,7 @@ class ViewConsoleView:
         text = input("Введите текст новой заметки. После нажатия клавиши Enter ввод будет закончен:\t")
         print("Создана новая заметка")
         return tuple([title, text])
+
     def del_dialog(self):
         while True:
             try:
@@ -26,12 +28,32 @@ class ViewConsoleView:
     def read_dialog(self):
         while True:
             try:
-                del_id = int(input("Введите индекс читаемой заметки:\t"))
+                read_id = int(input("Введите индекс читаемой заметки:\t"))
                 break
             except ValueError:
                 print("не число")
-        return del_id
+        return read_id
 
+    def correct_dialog(self):
+        while True:
+            try:
+                read_id = int(input("Введите индекс читаемой заметки:\t"))
+                break
+            except ValueError:
+                print("не число")
+        text = input("Введите новый текст:\t")
+        return tuple([read_id, text])
+
+    def read_dialog_by_date(self):
+        while True:
+            try:
+                user_date = (int(i) for i in input("Введите дату в формате ГГГГ-ММ-ЧЧ:\t").split("-"))
+                user_date = list(user_date)
+                d = date(user_date[0], user_date[1], user_date[2])
+                break
+            except ValueError:
+                print("не число календаря")
+        return d
 
     def console_printer(self, to_print_string: str):
         len_c = self.__console_length
