@@ -9,8 +9,8 @@ public class Toy {
     private final ToyType type;
     private final ToyColor color;
 
-    public static Toy newEqualToy(Toy anotherToy) {
-        return new Toy(anotherToy.getId(), anotherToy.getName(), anotherToy.getType());
+    public Toy newEqualToy() {
+        return new Toy(this.getId(), this.getName(), this.getType());
     }
 
     public Toy(int Id, String name, ToyType type) {
