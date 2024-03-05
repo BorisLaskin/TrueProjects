@@ -1,7 +1,6 @@
 package model;
 
-import MyExceptions.ToyExistException;
-
+import MyExceptions.*;
 import java.util.*;
 
 public class ToySet {

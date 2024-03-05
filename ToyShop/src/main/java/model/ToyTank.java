@@ -5,11 +5,11 @@ import java.util.*;
 public class ToyTank {
     public ToyType type;
     private final int tankCapacity;
-    private float possibility;
+    private double possibility;
     private final Deque<Toy> priseQueue = new ArrayDeque<>();
     private final List<Toy> tankList = new ArrayList<>();
 
-    public ToyTank(ToyType type, int tankCapacity, float possibility) {
+    public ToyTank(ToyType type, int tankCapacity, double possibility) {
         this.type = type;
         this.tankCapacity = tankCapacity;
         this.possibility = possibility;
@@ -61,11 +61,11 @@ public class ToyTank {
         return this.tankCapacity;
     }
 
-    public float getPossibility() {
+    public double getPossibility() {
         return this.possibility;
     }
 
-    public void setPossibility(float possibility) {
+    public void setPossibility(double possibility) {
         this.possibility = possibility;
     }
 }

@@ -21,7 +21,7 @@ public class Test {
         var list = newSet.getMap().get(newSet.getToyById(1000005));
 //        list.forEach(k -> System.out.println(k.toString()));
 
-        ToyTank tankMID = new ToyTank(ToyType.MIDIUM,15,0.2f);
+        ToyTank tankMID = new ToyTank(ToyType.MIDIUM,15,0.2);
         tankMID.fullTank(newSet);
         tankMID.getListOfTank().forEach(k -> System.out.println(k.toString()));
 //        tankMID.mixTank();
