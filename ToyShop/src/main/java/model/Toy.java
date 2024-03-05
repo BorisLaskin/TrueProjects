@@ -35,7 +35,7 @@ public class Toy {
 
     @Override
     public String toString() {
-        return this.name + " (" + this.color + ")";
+        return this.name + " (" + this.color.toString() + ") - " + this.type.toString();
     }
 
 

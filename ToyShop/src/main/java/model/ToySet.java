@@ -64,4 +64,10 @@ public class ToySet {
             generateNewToys(toy, count);
         }
     }
+    public void generateAllByCountByType(ToyType type,int count) {
+        List<Toy> list = this.getToyListByType(type);
+        for (Toy toy : list) {
+            generateNewToys(toy, count);
+        }
+    }
 }

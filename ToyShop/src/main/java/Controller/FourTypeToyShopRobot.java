@@ -12,8 +12,9 @@ import java.util.List;
 import java.util.Random;
 
 public class FourTypeToyShopRobot extends ToyShopRobot {
-
+    private final ToySet myToys;
     public FourTypeToyShopRobot() {
+        this.toyTanks = new ArrayList<>();
         this.toyTanks.add(new ToyTank(ToyType.EXTRASMALL, 1000, 0.65f));
         this.toyTanks.add(new ToyTank(ToyType.SMALL, 200, 0.2f));
         this.toyTanks.add(new ToyTank(ToyType.MIDIUM, 50, 0.1f));
@@ -32,20 +33,41 @@ public class FourTypeToyShopRobot extends ToyShopRobot {
         for (ToyTank tank : this.toyTanks) {
             tank.fullTank(newSet);
         }
+        this.myToys = newSet;
     }
 
     @Override
-    Toy getOneToy(ToyTank tank) {
-        return tank.getToyFromPriseQueue();
-    }
-
-    @Override
-    void Lottery(AbstractView view) {
-        int countToPrise = 20;
-        for (int i = 0; i < countToPrise; i++) {
-
-
+    Toy getOneToy() {
+        double value = this.randomGenerator.nextDouble();
+        Toy result;
+        ToyTank currentTank = this.toyTanks.get(0);
+        if(currentTank.getListOfTank().size() < currentTank.getTankCapacity()/4){
+            this.myToys.generateAllByCountByType(currentTank.type, currentTank.getTankCapacity()/2);
+            currentTank.fullTank(this.myToys);
         }
+        double currentPossability = 0;
+
+        for (int i = 0; i < toyTanks.size(); i++) {
+            currentPossability += toyTanks.get(i).getPossibility();
+            if (value < currentPossability){
+                currentTank = toyTanks.get(i);
+                break;
+            }
+        }
+        result = currentTank.getToyFromPriseQueue();
+        if (result != null) return result;
+        else return getOneToy();
+    }
+
+    @Override
+    public void Lottery(AbstractView view) {
+        int countToPrise = view.getCountToPrise();
+        List<Toy> result = new ArrayList<>();
+        for (int i = 0; i < countToPrise; i++) {
+            result.add(getOneToy());
+        }
+        view.getResults(result);
+        view.printLotteryResults();
     }
 
     public List<Double> getListOfStats() {
